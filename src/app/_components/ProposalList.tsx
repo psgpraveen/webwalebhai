@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
-import { Proposal } from "@/src/_types/proposal";
+import { Proposal } from "@/app/_types/proposal";
 import ProposalDetail from "./ProposalDetail";
 
 export default function ProposalList() {

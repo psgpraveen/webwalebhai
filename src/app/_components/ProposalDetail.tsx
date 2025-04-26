@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { Proposal } from "@/src/_types/proposal";
+import { Proposal } from "@/app/_types/proposal";
 
 export default function ProposalDetail({ proposal, onBack }: { proposal: Proposal, onBack: () => void }) {
   const [response, setResponse] = useState(proposal.response || "");
@@ -27,12 +27,7 @@ export default function ProposalDetail({ proposal, onBack }: { proposal: Proposa
       <p className="text-gray-600 mb-2"><strong>Description:</strong> {proposal.description}</p>
       <p className="text-gray-600 mb-2"><strong>Budget:</strong> {proposal.budget}</p>
       <p className="text-gray-400 mb-4"><strong>Date:</strong> {proposal.createdAt ? new Date(proposal.createdAt).toLocaleString() : ""}</p>
-      <textarea
-        className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
-        placeholder="Write your response to the client..."
-        value={response}
-        onChange={e => setResponse(e.target.value)}
-      />
+      <textarea className="input" placeholder="Write your response to the client..." value={response} onChange={e => setResponse(e.target.value)} />
       <button className="mt-4 w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition"
         onClick={handleResponse} disabled={loading}>
         {loading ? "Saving..." : "Save Response"}

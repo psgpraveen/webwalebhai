@@ -1,7 +1,7 @@
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 
-export const authOptions = {
+export const handler = NextAuth({
   providers: [
     CredentialsProvider({
       name: "Admin",
@@ -10,7 +10,6 @@ export const authOptions = {
         password: { label: "Password", type: "password" }
       },
       async authorize(credentials) {
-        // Replace with your secure check
         if (
           credentials?.username === process.env.ADMIN_USER &&
           credentials?.password === process.env.ADMIN_PASS
@@ -21,8 +20,9 @@ export const authOptions = {
       }
     })
   ],
-  session: { strategy: "jwt" }
-};
+  session: { strategy: "jwt" },
+  secret: process.env.NEXTAUTH_SECRET,
+});
 
-const handler = NextAuth(authOptions);
+// const handler = NextAuth(authOptions);
 export { handler as GET, handler as POST };

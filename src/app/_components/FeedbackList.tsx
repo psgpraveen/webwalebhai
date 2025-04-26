@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
-import { Feedback } from "@/src/_types/feedback";
+import { Feedback } from "@/app/_types/feedback";
 import FeedbackDetail from "./FeedbackDetail";
 
 export default function FeedbackList() {
@@ -8,7 +8,7 @@ export default function FeedbackList() {
   const [selected, setSelected] = useState<Feedback | null>(null);
 
   useEffect(() => {
-    fetch("/api/feedback?all=true") // you may want to adjust API to show all for admin
+    fetch("/api/feedback?all=true")
       .then(res => res.json())
       .then(setFeedbacks);
   }, []);

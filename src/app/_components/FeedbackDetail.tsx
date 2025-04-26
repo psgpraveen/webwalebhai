@@ -38,12 +38,7 @@ export default function FeedbackDetail({ feedback, onBack }: { feedback: Feedbac
       <p className="text-gray-600 mb-2"><strong>Email:</strong> {feedback.email}</p>
       <p className="text-gray-600 mb-2"><strong>Feedback:</strong> {feedback.message}</p>
       <p className="text-gray-400 mb-4"><strong>Date:</strong> {feedback.createdAt ? new Date(feedback.createdAt).toLocaleString() : ""}</p>
-      <textarea
-        className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
-        placeholder="Write your response (optional)..."
-        value={response}
-        onChange={e => setResponse(e.target.value)}
-      />
+      <textarea className="input" placeholder="Write your response (optional)..." value={response} onChange={e => setResponse(e.target.value)} />
       <button className="mt-4 w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition"
         onClick={handleResponse} disabled={loading}>
         {loading ? "Saving..." : "Save Response"}

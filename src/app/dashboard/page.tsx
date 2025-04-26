@@ -1,8 +1,8 @@
 import { getServerSession } from "next-auth";
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { handler } from "@/app/api/auth/[...nextauth]/route";
 
-export default function DashboardHome() {
-  const session = await getServerSession(authOptions);
+export default async function DashboardHome() {
+  const session = getServerSession(handler);
   if (!session) return <div>Access denied</div>;
 
   return (
