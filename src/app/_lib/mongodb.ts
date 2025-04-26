@@ -9,6 +9,7 @@ let cached = (global as any).mongoose || { conn: null, promise: null };
 export async function dbConnect() {
   if (cached.conn) return cached.conn;
   if (!cached.promise) {
+    console.log("Connecting to MongoDB at:", MONGODB_URI);
     cached.promise = mongoose.connect(MONGODB_URI, { bufferCommands: false }).then(m => m);
   }
   cached.conn = await cached.promise;
