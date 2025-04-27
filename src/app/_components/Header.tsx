@@ -9,7 +9,7 @@ const Header = () => {
     <header className="sticky top-0 z-50 bg-white shadow-sm">
       <div className="w-full max-w-7xl mx-auto py-4 px-6 flex items-center justify-between">
         <Link href="/" className="text-3xl font-extrabold text-blue-700 tracking-tight">
-          Webwalebhai
+          WebWaleBhai!
         </Link>
 
         {/* Desktop Nav */}
