@@ -18,10 +18,10 @@ export default function ProposalsPage() {
             className="text-center mb-12"
           >
             <h1 className="text-5xl font-extrabold text-gray-900 leading-tight mb-4">
-              Let's Build Your Dream Project
-            </h1>
+            Let&apos;s Build Your Dream Project</h1>
+            
             <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-              Got an idea? Tell us about it, and we’ll bring it to life. Fill out the proposal form and we’ll reach out to discuss how we can collaborate!
+              Got an idea? Tell us about it, and we&apos;ll bring it to life. Fill out the proposal form and we&apos;ll reach out to discuss how we can collaborate!
             </p>
           </motion.div>
 
@@ -36,7 +36,7 @@ export default function ProposalsPage() {
       </section>
 
       <footer className="text-center py-8 text-gray-500 text-sm">
-        © {new Date().getFullYear()} YourCompany. All rights reserved.
+        © {new Date().getFullYear()} WebWaleBhai. All rights reserved.
       </footer>
     </main>
   );

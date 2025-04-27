@@ -59,7 +59,7 @@ export default function ProposalForm() {
           transition={{ delay: 0.2 }}
           className="mt-4 text-gray-500 max-w-lg mx-auto"
         >
-          Share your vision with us. Let's transform your ideas into an impactful digital product!
+          Share your vision with us. Lets transform your ideas into an impactful digital product!
         </motion.p>
       </div>
 
@@ -75,7 +75,7 @@ export default function ProposalForm() {
               type={field.type}
               name={field.name}
               required
-              value={(form as any)[field.name]}
+              value={form[field.name as keyof typeof form]}
               onChange={handleChange}
               placeholder=" "
               className="peer w-full border-2 border-gray-300 rounded-xl px-4 pt-6 pb-2 focus:outline-none focus:ring-2 focus:ring-blue-500 bg-gray-50 placeholder-transparent transition duration-300 hover:border-blue-500 focus:border-blue-500"

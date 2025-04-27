@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { Feedback } from "@/src/_types/feedback";
+import { Feedback } from "@/app/_types/feedback";
 
 export default function FeedbackDetail({ feedback, onBack }: { feedback: Feedback, onBack: () => void }) {
   const [response, setResponse] = useState(feedback.response || "");

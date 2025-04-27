@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
-
+import Header from '@/app/_components/Header'
 export default function AdminLoginPage() {
   const [form, setForm] = useState({ username: "", password: "" });
   const [error, setError] = useState("");
@@ -29,7 +29,7 @@ export default function AdminLoginPage() {
     }
   };
 
-  return (
+  return (<><Header/>
     <main className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-white">
       <form onSubmit={handleSubmit} className="bg-white rounded-xl shadow-xl p-8 w-full max-w-sm space-y-6">
         <h2 className="text-2xl font-bold text-center text-blue-700">Admin Login</h2>
@@ -67,6 +67,6 @@ export default function AdminLoginPage() {
         </button>
         {error && <div className="text-center text-red-600">{error}</div>}
       </form>
-    </main>
+    </main></>
   );
 }

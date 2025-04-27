@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import { signOut } from "next-auth/react";
 
@@ -20,7 +22,6 @@ export default function AdminSidebar() {
         >
           Proposals
         </Link>
-
         <Link
           href="/dashboard/feedback"
           className="block py-2 px-3 rounded hover:bg-blue-50 font-medium text-gray-700"
@@ -28,7 +29,7 @@ export default function AdminSidebar() {
           Feedback
         </Link>
         <button
-          // onClick={() => signOut()}
+          onClick={() => signOut()}
           className="text-red-600 hover:underline px-4 py-2"
         >
           Logout
