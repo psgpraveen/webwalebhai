@@ -2,6 +2,8 @@ import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "react-hot-toast";
+import Script from "next/script";
+const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID || "";
 
 // Load fonts
 const geistSans = Geist({
@@ -61,7 +63,7 @@ export const metadata: Metadata = {
     description: "Let's build your next big idea with WebWalebhai's expert web solutions!",
     site: "@WebWalebhai",
     creator: "@WebWalebhai",
-    images: ["https://webwalebhai.vercel.app/WebWaleBhai.png"],
+    images: ["https://webwalebhai.vercel.app/WebWalebhai.png"],
   },
   robots: {
     index: true,
@@ -76,7 +78,6 @@ export const metadata: Metadata = {
   },
 };
 
-// Viewport for mobile responsiveness
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
@@ -84,10 +85,7 @@ export const viewport: Viewport = {
   viewportFit: "cover",
 };
 
-// Theme Color
-export const themeColor = "#ffffff";
 
-// Main Layout
 export default function RootLayout({
   children,
 }: {
@@ -99,6 +97,40 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         suppressHydrationWarning
       >
+        {/* Google Analytics */}
+        <Script
+  src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
+  strategy="afterInteractive"
+/>
+<Script id="google-analytics" strategy="afterInteractive">
+  {`
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', '${GA_MEASUREMENT_ID}');
+  `}
+</Script>
+
+
+        {/* Structured Data */}
+        <Script
+          id="structured-data"
+          type="application/ld+json"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              name: "WebWalebhai",
+              url: "https://webwalebhai.vercel.app",
+              logo: "https://webwalebhai.vercel.app/WebWaleBhai.png",
+              sameAs: [
+                "https://twitter.com/WebWalebhai"
+              ]
+            }),
+          }}
+        />
+
         {children}
         <Toaster position="top-right" toastOptions={{ duration: 4000 }} />
       </body>
