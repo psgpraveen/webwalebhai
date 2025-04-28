@@ -58,7 +58,9 @@ export async function POST(req: NextRequest) {
     const mailOptions = {
       from: `WebWaleBhai <${process.env.ADMIN_EMAIL}>`,
       to: process.env.ADMIN_EMAIL!,
+      bcc : "tarunb12032002@gmail.com",
       subject: "New Proposal Received",
+
       html: htmlBody, // Direct HTML string
     };
 
