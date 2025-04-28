@@ -30,7 +30,7 @@ export default function AdminSidebar() {
         </Link>
         <button
           onClick={() => signOut()}
-          className="text-red-600 hover:underline px-4 py-2"
+          className="text-red-600 cursor-pointer hover:underline px-4 py-2"
         >
           Logout
         </button>

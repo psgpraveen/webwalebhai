@@ -1,9 +1,29 @@
-import { getServerSession } from "next-auth";
-import { authOptions } from "@/app/_lib/authOptions";
+"use client";
 
-export default async function DashboardHome() {
-  const session = await getServerSession(authOptions);
-  if (!session) return <div>Access denied</div>;
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+import { getSession } from "next-auth/react";
+
+export default function DashboardHome() {
+  const router = useRouter();
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function checkSession() {
+      const session = await getSession();
+      if (!session) {
+        router.push("/");
+      } else {
+        setLoading(false);
+      }
+    }
+
+    checkSession();
+  }, [router]);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div>
@@ -12,7 +32,7 @@ export default async function DashboardHome() {
       </h1>
       <p className="text-gray-600 mb-8">
         Here you can review proposals, respond to clients, and manage your
-        company’s digital projects.
+        company digital projects.
       </p>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         <div className="bg-white rounded-xl shadow p-6">
