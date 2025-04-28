@@ -20,7 +20,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://webwalebhai.vercel.app"),
   title: {
-    default: "WebWalebhai | Build Modern Websites",
+    default: "WebWalebhai!",
     template: "%s | WebWalebhai",
   },
   description: "WebWalebhai offers high-quality web development services using Next.js, React, and modern technologies to bring your ideas to life.",
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url: "https://webwalebhai.vercel.app",
-    title: "WebWalebhai | Build Modern Websites",
+    title: "WebWalebhai !",
     description: "Professional websites built with Next.js, React, Tailwind CSS, and more. Bring your ideas to life with WebWalebhai!",
     siteName: "WebWalebhai",
     images: [
