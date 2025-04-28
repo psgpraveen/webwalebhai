@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "react-hot-toast";
 
+// Load fonts
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -13,31 +14,36 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+// SEO Metadata
 export const metadata: Metadata = {
-  title: "WebWalebhai | Build Modern Websites",
-  description: "WebWalebhai offers professional web development services specializing in Next.js, React, and Tailwind. Build your modern website with us today!",
-  applicationName: "WebWalebhai",
-  authors: [{ name: "WebWalebhai Team", url: "https://webwalebhai.vercel.app/" }],
-  generator: "Next.js",
+  metadataBase: new URL("https://webwalebhai.vercel.app"),
+  title: {
+    default: "WebWalebhai | Build Modern Websites",
+    template: "%s | WebWalebhai",
+  },
+  description: "WebWalebhai offers high-quality web development services using Next.js, React, and modern technologies to bring your ideas to life.",
   keywords: [
     "Web development",
     "Next.js",
     "React",
+    "psgpraveen",
     "JavaScript",
     "Frontend Developer",
     "Backend Developer",
+    "Full Stack Developer",
+    "Tailwind CSS",
     "Web Developer India",
     "WebWalebhai",
-    "Tailwind CSS",
-    "Full Stack Developer",
   ],
+  applicationName: "WebWalebhai",
+  authors: [{ name: "WebWalebhai Team", url: "https://webwalebhai.vercel.app" }],
   creator: "WebWalebhai",
   publisher: "WebWalebhai",
-  themeColor: "#ffffff",
   openGraph: {
+    type: "website",
+    url: "https://webwalebhai.vercel.app",
     title: "WebWalebhai | Build Modern Websites",
-    description: "WebWalebhai builds stunning websites and powerful apps for ambitious brands. Share your idea and get a custom proposal from our expert team.",
-    url: "https://webwalebhai.vercel.app/",
+    description: "Professional websites built with Next.js, React, Tailwind CSS, and more. Bring your ideas to life with WebWalebhai!",
     siteName: "WebWalebhai",
     images: [
       {
@@ -48,18 +54,29 @@ export const metadata: Metadata = {
       },
     ],
     locale: "en_US",
-    type: "website",
   },
   twitter: {
     card: "summary_large_image",
     title: "WebWalebhai | Build Modern Websites",
-    description: "Professional websites using the latest technologies. Let's build your next idea together!",
+    description: "Let's build your next big idea with WebWalebhai's expert web solutions!",
     site: "@WebWalebhai",
     creator: "@WebWalebhai",
     images: ["https://webwalebhai.vercel.app/WebWaleBhai.png"],
   },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
 };
 
+// Viewport for mobile responsiveness
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
@@ -67,10 +84,21 @@ export const viewport: Viewport = {
   viewportFit: "cover",
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+// Theme Color
+export const themeColor = "#ffffff";
+
+// Main Layout
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`} suppressHydrationWarning>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        suppressHydrationWarning
+      >
         {children}
         <Toaster position="top-right" toastOptions={{ duration: 4000 }} />
       </body>
