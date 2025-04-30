@@ -52,7 +52,9 @@ export default function EnhancedProposalForm() {
         toast.success("Your proposal has been submitted! 🚀");
         setForm({ name: "", email: "", phone: "", service: "", timeline: "", description: "", budget: "" });
       } else {
+        toast.error("Submission failed");
         throw new Error("Submission failed");
+
       }
     } catch (error) {
       console.error(error);

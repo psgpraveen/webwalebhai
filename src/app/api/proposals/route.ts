@@ -15,6 +15,8 @@ const transporter = nodemailer.createTransport({
 export async function POST(req: NextRequest) {
   await dbConnect();
   const data = await req.json();
+  console.log(data);
+  
   const proposal = await Proposal.create(data);
 
   try {
@@ -40,7 +42,7 @@ export async function POST(req: NextRequest) {
             </tr>
             <tr>
               <td style="padding: 8px;"><strong>Type</strong></td>
-              <td style="padding: 8px;">${data.type}</td>
+              <td style="padding: 8px;">${data.service}</td>
             </tr>
             <tr>
               <td style="padding: 8px;"><strong>Description</strong></td>
@@ -61,7 +63,7 @@ export async function POST(req: NextRequest) {
       bcc : "tarunb12032002@gmail.com",
       subject: "New Proposal Received",
 
-      html: htmlBody, // Direct HTML string
+      html: htmlBody, 
     };
 
     const info = await transporter.sendMail(mailOptions);
